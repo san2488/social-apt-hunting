@@ -33,7 +33,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="#">Sherlock Homes</a>
+                <a class="navbar-brand" href="#">Apartment Hunt</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -64,29 +64,28 @@
                         <div class="input-group">
                             <span class="input_large_head_margin">Home Address</span>
                             <span class="input_large_head_margin">Office Address</span>
+                            <span class="input_head_margin">Beds</span>
                         </div>
                         <div class="input-group">
                             <span class="large_input"><input id="home" type="text" class="form-control" placeholder="Enter your city and state, or zip, to begin"></span>
                             <span class="large_input"><input id="office" type="text" class="form-control" placeholder="Enter your city and state, or zip, to begin"></span>
-                        </div>
-                        <div class="input-group input_group_pad"></div>
-                        <div class="input-group">
-                            <span class="input_head_margin">Beds</span>
-                        <!--    <span class="input_head_margin">Baths</span>       -->
-                            <span class="input_head_margin">Price Range</span>
-                        </div>
-                        <div class="input-group">
-                            <span class="input_margin">
+                               <span class="input_margin">
                                     <select id="rooms">
-                                        <option value="Any">Any</option>
-                                        <option value="0">Studio</option>
+                                        <option value="Studio">Studio</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
-                                        <option value="5">5+</option>
                                     </select>
                             </span>
+                        </div>
+                        <div class="input-group input_group_pad"></div>
+                        <div class="input-group">
+
+                        <!--    <span class="input_head_margin">Baths</span>       -->
+                            <span class="input_head_margin">Price Range</span>
+                        </div>
+                        <div class="input-group">
                             <!--
                             <span id="baths" class="input_margin">
                                 <select id="bath">
@@ -106,6 +105,8 @@
                             <span style="padding-left: 15px; padding-right: 15px;"> to </span>
                             <span class="input-group-addon semi_left">$</span>
                             <span id="end_price"><input type="text" class="semi_right form-control"></span>
+                        </div>
+                        <div id="preloader">
                         </div>
                         <div class="btn-group search">
                             <button type="button" class="btn btn-primary">Search</button>
@@ -151,6 +152,16 @@
 
                                   </tbody>
                               </table>
+                          </div>
+                          <div id="reload" class="container">
+                              <div>
+                              <select id="reload_select" style="margin: 25px 15px 15px 0px; width: 500px;">
+                                    <option></option>
+                              </select>
+                              </div>
+                              <div>
+                                  <button id="reload_btn" type="button" class="btn btn-primary">Load</button>
+                              </div>
                           </div>
                     </div>
                 </div>

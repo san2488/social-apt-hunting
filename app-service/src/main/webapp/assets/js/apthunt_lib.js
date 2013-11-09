@@ -13,7 +13,26 @@ var APT_HUNT_LIB = (function () {
 
     var sh_sm_lib = function (valuesArg) {
 
+    this.select = $("#reload_select");
+    this.option = $("#reload_select option").remove();
+    var that = this;
+    this.load;
 
+//        $.each([1,2,3],function(i,v){
+//            var o = that.option.clone();
+//            o.val(i);
+//            o.text("Query "+i);
+//            that.select.append(o);
+//            //that.search([v.addr+" "+v.city+" "+ v.zip, v.beds, "$"+v.rent, v.rating, v.numRoutes, 0])
+//        });
+
+
+     //   $("select").removeClass("chzn-done").css('display', 'inline').data('chosen', null);
+     //   $("*[class*=chzn]").remove();
+     //   this.select = $("#reload_select").clone();
+     //   $("#reload_select").remove();
+     //   $("#reload_select").appendTo("#reload div");
+     //   $("#reload_select").chosen({width: "500px"});
 
     };
 
@@ -31,21 +50,37 @@ var APT_HUNT_LIB = (function () {
 
         displaySearchResults: function(data){
             var that = this;
-//            var data = this.getSearchData();
             $.each(data, function(i, v) {
-            	$('#example').dataTable().fnAddData([i+1,v.addr+" "+v.city+" "+ v.zip, v.beds, "$"+v.rent, v.rating, v.numRoutes])
+            	$('#example').dataTable().fnAddData([i+1,v.addr+" "+v.city+" "+ v.zip, v.beds, "$"+v.rent, v.rating, v.numRoutes]);
 //                that.createRow([i+1,v.addr+" "+v.city+" "+ v.zip, v.beds, "$"+v.rent, v.rating, v.numRoutes])
             });
+            $("#preloader").removeClass("loading");
+            $("#input .glyphicon-minus-sign").trigger("click");
+            $("#output .glyphicon-plus-sign").trigger("click");
+
         },
 
-        search : function(){
+//        unchosen: function() {
+//            return $(this).each(function() {
+//                var element = $(this);
+//                if(element.hasClass('chzn-done')){
+//                    //remove chosen
+//                    element.next('[id*=_chzn]').remove(); //Make sure its id contain _chzn
+//                    //remove chosen class in original combobox and make it visible
+//                    element.removeClass('chzn-done').css('display','block');
+//                }
+//            });
+//        },
+
+        search : function(dhome,doffice,dsprice,deprice,drooms,dbath,flag){
           var sub = $("#collapseOne");
-          var home = $("#home").val();
-          var office = $("#office").val();
-          var sprice = $("#start_price input").val();
-          var eprice = $("#end_price input").val();
-          var rooms = $("#rooms").val();
-          var bath = $("#bath").val();
+          var home = dhome || $("#home").val();
+          var office = doffice || $("#office").val();
+          var sprice = dsprice || $("#start_price input").val();
+          var eprice = deprice || $("#end_price input").val();
+          var rooms = drooms || $("#rooms").val();
+          var bath = dbath || $("#bath").val();
+          var save = flag;
 
           var req = {
               home: home,
@@ -53,20 +88,18 @@ var APT_HUNT_LIB = (function () {
               rentMin: sprice,
               rentMax: eprice,
               beds: rooms,
-              save: 0
+              bath: bath,
           };
 
             localStorage.setItem('SearchReq',JSON.stringify(req));
-
             $.ajax({
-            	type: "POST",
-            	url: "/app-service/search",
-            	data: req,
-            	success: this.displaySearchResults,
-            	dataType: 'json'
-            	});
-            
-//            this.displaySearchResults();
+    	              type: "POST",
+    	              url: "/app-service/search",
+    	              data: req,
+    	              success: this.displaySearchResults,
+    	              dataType: 'json'
+            	  });
+
         }
 
 

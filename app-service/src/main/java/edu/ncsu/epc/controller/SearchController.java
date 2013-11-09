@@ -24,20 +24,19 @@ public class SearchController {
 			@RequestParam("office") String office,
 			@RequestParam("beds") int beds, 
 			@RequestParam("rentMin") float rentMin,
-			@RequestParam("rentMax") float rentMax,
-			@RequestParam("save") boolean save) {
+			@RequestParam("rentMax") float rentMax) {
 		
-		if(false) {
-			DatabaseConnection dc = new DatabaseConnection();
-			SearchQuery sq = new SearchQuery();
-			sq.setHomeAddr(home);
-			sq.setOfcAddr(home);
-			sq.setBeds(beds);
-			sq.setRentMin(rentMin);
-			sq.setRentMax(rentMax);
-			
-			dc.saveSearchQueries(sq);
-		}
+//		if(false) {
+//			DatabaseConnection dc = new DatabaseConnection();
+//			SearchQuery sq = new SearchQuery();
+//			sq.setHomeAddr(home);
+//			sq.setOfcAddr(home);
+//			sq.setBeds(beds);
+//			sq.setRentMin(rentMin);
+//			sq.setRentMax(rentMax);
+//			
+//			dc.saveSearchQueries(sq);
+//		}
 		
 		ArrayList<SearchResults> sr = new ArrayList<SearchResults>();
         GetInfo m = new GetInfo();

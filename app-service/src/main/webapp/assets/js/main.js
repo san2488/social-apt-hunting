@@ -7,16 +7,15 @@ $(document).ready(function () {
    <!-- $("#results .collapse").collapse(); -->
 
    $("#rooms").chosen({width: "100px"});
-    //$("#bath").chosen({width: "100px"});
+    //$("#reload_select").chosen({width: "500px"});
 
 
     $("#example").dataTable(
         {
             "sPaginationType": "full_numbers",
-            "aoColumnDefs": [ {
-                "sType": "formatted-num",
-                "aTargets": [1,2,3,4,5]
-            } ]
+            "aoColumnDefs": [
+                { "bSortable": false, "aTargets": [] }
+             ]
         });
 
 
@@ -37,10 +36,20 @@ $(document).ready(function () {
     var lib = new APT_HUNT_LIB({});
 
     $(".search button").on("click",function(){
-        $("#input .glyphicon-minus-sign").trigger("click");
-        $("#output .glyphicon-plus-sign").trigger("click");
-        lib.search();
+        $("#preloader").addClass("loading");
+        lib.search(flag=0);
     });
 
+    $("#save").on("click",function(){
+        $("#preloader").addClass("loading");
+        lib.search(flag=1);
+    });
+
+    $("#load").on("click",function(){
+        var index = $("#reload_select").val();
+        var v = lib.load[index];
+        lib.search([v.addr+" "+v.city+" "+ v.zip, v.beds, "$"+v.rent, v.rating, v.numRoutes, 0]);
+
+    });
 
 });

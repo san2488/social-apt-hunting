@@ -68,5 +68,6 @@
 	<classpathentry kind="lib" path="/Users/SAN/Documents/Code/Java/ApartmentInfo/dist/lib/java-json.jar"/>
 	<classpathentry kind="lib" path="/Users/SAN/Documents/Code/Java/ApartmentInfo/dist/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="/Users/SAN/Documents/Code/Java/ApartmentInfo/dist/lib/scribe-1.1.0.jar"/>
+	<classpathentry kind="lib" path="/Users/SAN/Documents/Code/Java/mysql-connector-java-5.1.27/mysql-connector-java-5.1.27-bin.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

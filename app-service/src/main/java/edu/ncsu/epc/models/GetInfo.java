@@ -83,8 +83,18 @@ public class GetInfo {
                 	aptInfo.city = json2.get("city").toString();
                 if(json2.get("state") != null)
                 	aptInfo.state = json2.get("state").toString();
-                if(json2.get("bedrooms") != null)
-                	aptInfo.noOfBedrooms = Double.parseDouble(json2.get("bedrooms").toString());
+                if(json2.get("bedrooms") == null)
+                {    
+                    JSONArray jsonArray1 = (JSONArray)new JSONParser().parse(json2.get("latest_prices").toString());
+                    JSONObject jsonlatest_price = (JSONObject)new JSONParser().parse(jsonArray1.get(0).toString());
+                    aptInfo.noOfBedrooms = Double.parseDouble(jsonlatest_price.get("bedrooms").toString());
+                    aptInfo.rent=Double.parseDouble(jsonlatest_price.get("rent").toString());
+                }
+                else
+                {
+                    aptInfo.noOfBedrooms = Double.parseDouble(json2.get("bedrooms").toString());
+                    aptInfo.rent=Double.parseDouble(json2.get("rent").toString());
+                }
                 if(json2.get("rent") != null)
                 	aptInfo.rent=Double.parseDouble(json2.get("rent").toString());
                 aptInfo.zip=(String)json2.get("zip_code");

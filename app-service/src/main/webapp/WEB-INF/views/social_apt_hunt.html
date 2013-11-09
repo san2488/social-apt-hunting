@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ApartmentHunt</title>
+
+    <!-- Custom styles for this template -->
+    <!-- CSS Stylesheet, compiled with SASS: http://sass-lang.com/ -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
+    <link rel="stylesheet" href="assets/css/chosen.min.css">
+    <link rel="stylesheet" href="assets/css/dataTables.css">
+    <link rel="stylesheet" href="assets/css/apthunt.css">
+
+   </head>
+
+
+</head>
+<body id="apthunt">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="#">Sherlock Homes</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+
+    <section id="input">
+        <div class="panel-group" id="filters">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="expand_collapse_ui">
+                            <a href="javascript:void(0)" style="display: none;"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                            <a href="javascript:void(0)"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                        </div>
+
+                        <a data-toggle="collapse" data-parent="#filters" href="#collapseOne">Search Filters</a>
+                    </h4>
+                </div>
+
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <span class="input_large_head_margin">Home Address</span>
+                            <span class="input_large_head_margin">Office Address</span>
+                        </div>
+                        <div class="input-group">
+                            <span class="large_input"><input id="home" type="text" class="form-control" placeholder="Enter your city and state, or zip, to begin"></span>
+                            <span class="large_input"><input id="office" type="text" class="form-control" placeholder="Enter your city and state, or zip, to begin"></span>
+                        </div>
+                        <div class="input-group input_group_pad"></div>
+                        <div class="input-group">
+                            <span class="input_head_margin">Beds</span>
+                        <!--    <span class="input_head_margin">Baths</span>       -->
+                            <span class="input_head_margin">Price Range</span>
+                        </div>
+                        <div class="input-group">
+                            <span class="input_margin">
+                                    <select id="rooms">
+                                        <option value="Any">Any</option>
+                                        <option value="0">Studio</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5+</option>
+                                    </select>
+                            </span>
+                            <!--
+                            <span id="baths" class="input_margin">
+                                <select id="bath">
+                                    <option value="Any">Any</option>
+                                    <option value="1">1</option>
+                                    <option value="1.5">1.5</option>
+                                    <option value="2">2</option>
+                                    <option value="2.5">2.5</option>
+                                    <option value="3">3</option>
+                                    <option value="3.5">3.5</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </span>
+                            -->
+                            <span class="input-group-addon semi_left">$</span>
+                            <span id="start_price"><input type="text" class="semi_right form-control"></span>
+                            <span style="padding-left: 15px; padding-right: 15px;"> to </span>
+                            <span class="input-group-addon semi_left">$</span>
+                            <span id="end_price"><input type="text" class="semi_right form-control"></span>
+                        </div>
+                        <div class="btn-group search">
+                            <button type="button" class="btn btn-primary">Search</button>
+                            <button id="save" type="button" style="margin-left: 15px" class="btn btn-info">Save Filter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="output">
+        <div class="panel-group" id="results">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="expand_collapse_ui">
+                            <a href="javascript:void(0)"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                            <a href="javascript:void(0)" style="display: none;"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                        </div>
+                        <a data-toggle="collapse" data-parent="#results" href="#collapseTwo">Search Results</a>
+                    </h4>
+                </div>
+
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                          <div class="container">
+                              <table id="example" border="0" cellpadding="0" cellspacing="0" class="pretty">
+                                  <thead>
+                                  <tr>
+                                      <th colspan="7">Apartments Stats and Rank</th>
+                                  </tr>
+                                  <tr>
+                                      <th>Sr No</th>
+                                      <th>Name & Address</th>
+                                      <th>Rooms</th>
+                                      <th>Rent</th>
+                                      <th>Yelp Ratings</th>
+                                      <th>Routes to Office</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+
+                                  </tbody>
+                              </table>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="assets/js/chosen.jquery.min.js" type="text/javascript"></script>
+</body>
+ <!-- Javascript at bottom of page -->
+
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <!-- Custom Code/Plugins: -->
+    <script type="text/javascript" src="assets/js/modernizr-min.js"></script>
+    <script type="text/javascript" src="assets/js/apthunt_lib.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+</body>
+</html>

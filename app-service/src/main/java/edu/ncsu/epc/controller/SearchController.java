@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import edu.ncsu.epc.models.*;
 
 @Controller
-//@RequestMapping("/search")
 public class SearchController {    
     static String consumerKey = "XUUoxfhcBxuORKj8DcwvOQ";
     static String consumerSecret = "d4K0txeRYBvBQUZjUth9xeVufrU";
@@ -25,7 +24,21 @@ public class SearchController {
 			@RequestParam("office") String office,
 			@RequestParam("beds") int beds, 
 			@RequestParam("rentMin") float rentMin,
-			@RequestParam("rentMax") float rentMax) {
+			@RequestParam("rentMax") float rentMax,
+			@RequestParam("save") boolean save) {
+		
+		if(false) {
+			DatabaseConnection dc = new DatabaseConnection();
+			SearchQuery sq = new SearchQuery();
+			sq.setHomeAddr(home);
+			sq.setOfcAddr(home);
+			sq.setBeds(beds);
+			sq.setRentMin(rentMin);
+			sq.setRentMax(rentMax);
+			
+			dc.saveSearchQueries(sq);
+		}
+		
 		ArrayList<SearchResults> sr = new ArrayList<SearchResults>();
         GetInfo m = new GetInfo();
         //String response = m.sendGetRequest();

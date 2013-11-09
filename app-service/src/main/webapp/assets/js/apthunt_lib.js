@@ -53,6 +53,7 @@ var APT_HUNT_LIB = (function () {
               rentMin: sprice,
               rentMax: eprice,
               beds: rooms,
+              save: 0
           };
 
             localStorage.setItem('SearchReq',JSON.stringify(req));

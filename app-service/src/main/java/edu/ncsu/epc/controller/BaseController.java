@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class BaseController {
-	@RequestMapping(value="/index", method = RequestMethod.GET)
+	@RequestMapping(value="/", method = RequestMethod.GET)
     public String index() {
-		System.out.println("index");
         return "/views/social_apt_hunt.html";
     }
 }
